@@ -5,16 +5,15 @@ import Pokecard from '../pokecard/Pokecard';
 class Pokedex extends Component {
 
     render() {
-        const { pokemon } = this.props;
+        const { pokemonIds } = this.props;
+        const pokecards = []
+        for (let id = 0; id < pokemonIds; id++) {
+            pokecards.push(<Pokecard key={id} id={id} />)
+        }
         return (
             <div className='Pokedex'>
                 <h1> Pokedex </h1>
-                {
-                    pokemon.map((pokemon) => {
-                        const { id, name, type, base_experience } = pokemon;
-                        return <Pokecard key={id} id={id} name={name} type={type} base_experience={base_experience} />
-                    })
-                }
+                {pokecards}
             </div>
         )
     }
